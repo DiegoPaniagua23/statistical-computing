@@ -1,3 +1,10 @@
+# CArpetas del curso
+/diapositivas
+/libros
+
+# Archivos generados
+*.pdf
+
 # Archivos de R y RStudio
 .Rhistory
 .Rproj.user
