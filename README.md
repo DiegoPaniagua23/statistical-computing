@@ -1,6 +1,3 @@
-# Tareas de Cómputo Estadístico
+# Statistical Computing Homework
 
-Repositorio para almacenar las tareas y proyectos de la materia de Cómputo Estadístico.
-
-
-
+Repository for storing assignments and projects for the Statistical Computing course.
