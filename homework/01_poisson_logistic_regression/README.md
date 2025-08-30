@@ -18,8 +18,8 @@ The homework consists of three main problems:
 - **Objective**: Prove that Bayes' theorem leads to logistic regression form
 - **Key Tasks**:
   - Use Bayes' theorem with normal distributions conditional on binary outcomes
-  - Show that P(Y=1|X) follows the logistic model form
-  - Derive the relationship β = (μ₁ - μ₀)/σ²
+  - Show that $P(Y=1|X)$ follows the logistic model form
+  - Derive the relationship $\beta = (\mu_1 - \mu_0)/\sigma^2$
 - **Statistical Concepts**: Bayes' theorem, conditional distributions, logistic transformation
 
 ### Problem 3: Poisson Regression Analysis (Practical Implementation)
