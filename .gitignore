@@ -1,13 +1,40 @@
-# Carpetas del curso
+# -------------------------------------------------------------------
+# R and RStudio specific files
+# -------------------------------------------------------------------
+# History files and workspace data
+.Rhistory
+.RData
+.RDataTmp
+
+# RStudio user configuration folder
+.Rproj.user/
+
+# -------------------------------------------------------------------
+# Operating System files
+# -------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------------------------------------------------
+# Generated files (outputs)
+# -------------------------------------------------------------------
+# If you generate PDF/HTML reports from RMarkdown, you can ignore them
+# if you prefer that each person compiles the .Rmd.
+# Example:
+# homework/01_poisson_logistic_regression/reporte/*.pdf
+*.pdf
+
+# -------------------------------------------------------------------
+# Course material folders (will be moved to 'course_materials')
+# -------------------------------------------------------------------
 /diapositivas
 /temario
 /libros
 /2024
 
-# Archivos generados
-*.pdf
-
-# Archivos de R y RStudio
-.Rhistory
-.Rproj.user
-.RData
+# -------------------------------------------------------------------
+# Large data files (optional)
+# -------------------------------------------------------------------
+# If you have very large data files, add them here.
+# Example:
+# **/data/very_large_file.csv
