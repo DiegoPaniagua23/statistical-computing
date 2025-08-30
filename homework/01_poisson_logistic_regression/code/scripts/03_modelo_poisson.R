@@ -13,7 +13,7 @@ library(readr)
 library(here)
 
 # Cargar datos ----------------------------------------------------------------
-datos <- read_csv(here("data", "datos_pacientes.csv"), show_col_types = FALSE)
+datos <- read_csv(here("code", "data", "datos_pacientes.csv"), show_col_types = FALSE)
 
 # INCISO b: Ajustar modelo de Poisson -----------------------------------------
 cat("Ajustando modelo de Poisson...\n")
@@ -39,8 +39,9 @@ cat("Grados de libertad:", df_residual, "\n")
 cat("Ratio Deviance/df:", ratio_sobredispersion, "\n")
 
 # Guardar modelo --------------------------------------------------------------
-saveRDS(modelo_poisson, here("results", "models", "modelo_poisson.rds"))
-cat("\n Modelo guardado en: results/models/modelo_poisson.rds\n")
+dir.create(here("code", "results", "models"), recursive = TRUE, showWarnings = FALSE)
+saveRDS(modelo_poisson, here("code", "results", "models", "modelo_poisson.rds"))
+cat("\n Modelo guardado en: code/results/models/modelo_poisson.rds\n")
 
 # Existe sobredispersión, ajustar modelo quasi-Poisson ------------------------
 cat("\nAjustando modelo quasi-Poisson...\n")
@@ -59,6 +60,5 @@ phi <- resumen_quasi$dispersion
 cat("\nEstimador de dispersión (phi):", round(phi, 3), "\n")
 
 # Guardar modelo --------------------------------------------------------------
-dir.create(here("results", "models"), recursive = TRUE, showWarnings = FALSE)
-saveRDS(modelo_quasi, here("results", "models", "modelo_quasipoisson.rds"))
-cat("\n Modelo guardado en: results/models/modelo_quasipoisson.rds\n")
+saveRDS(modelo_quasi, here("code", "results", "models", "modelo_quasipoisson.rds"))
+cat("\n Modelo guardado en: code/results/models/modelo_quasipoisson.rds\n")

@@ -1,0 +1,188 @@
+name: R Statistical Analysis
+
+# Trigger on pushes to main or changes in R files
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'homework/*/code/**/*.R'
+      - 'homework/*/code/**/*.csv'
+      - '.github/workflows/r-analysis.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'homework/*/code/**/*.R'
+      - 'homework/*/code/**/*.csv'
+
+jobs:
+  run-r-analysis:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        r-version: ['4.3.0']  # Can test multiple R versions
+    
+    steps:
+    # Setup
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup R ${{ matrix.r-version }}
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: ${{ matrix.r-version }}
+        use-public-rspm: true
+        
+    # Install system dependencies
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libcairo2-dev
+        
+    # Cache R packages
+    - name: Cache R packages
+      uses: actions/cache@v3
+      with:
+        path: ${{ env.R_LIBS_USER }}
+        key: ${{ runner.os }}-r-${{ matrix.r-version }}-${{ hashFiles('homework/*/code/**/*.R') }}
+        restore-keys: |
+          ${{ runner.os }}-r-${{ matrix.r-version }}-
+          
+    # Install R dependencies
+    - name: Install R dependencies
+      run: |
+        Rscript -e "
+        install.packages(c('dplyr', 'readr', 'ggplot2', 'here', 'testthat', 'rmarkdown'))
+        "
+        
+    # Run analysis for each homework
+    - name: Run statistical analysis
+      run: |
+        echo "## 📊 Statistical Analysis Results" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        # Function to run analysis in a homework directory
+        run_homework_analysis() {
+          local hw_dir="$1"
+          local hw_name=$(basename "$hw_dir")
+          
+          echo "### $hw_name" >> $GITHUB_STEP_SUMMARY
+          echo "Processing homework: $hw_name"
+          
+          cd "$hw_dir"
+          
+          # Check if this homework has R code
+          if [ -d "code" ] && [ -d "code/scripts" ]; then
+            echo "📁 Found R scripts in $hw_name"
+            
+            # Run scripts in order
+            for script in code/scripts/*.R; do
+              if [ -f "$script" ]; then
+                echo "🏃 Running $(basename "$script")"
+                
+                # Capture output and errors
+                if Rscript "$script" > /tmp/r_output.txt 2>&1; then
+                  echo "✅ $(basename "$script") completed successfully" >> $GITHUB_STEP_SUMMARY
+                else
+                  echo "❌ $(basename "$script") failed" >> $GITHUB_STEP_SUMMARY
+                  echo "<details><summary>Error details</summary>" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+                  head -20 /tmp/r_output.txt >> $GITHUB_STEP_SUMMARY
+                  echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+                  echo "</details>" >> $GITHUB_STEP_SUMMARY
+                fi
+              fi
+            done
+            
+            # Check if outputs were created
+            if [ -d "code/results" ]; then
+              echo "📊 Generated outputs:" >> $GITHUB_STEP_SUMMARY
+              find code/results -type f | head -10 | while read file; do
+                echo "- $(basename "$file")" >> $GITHUB_STEP_SUMMARY
+              done
+            fi
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cd - > /dev/null
+        }
+        
+        # Process each homework directory
+        find homework -name "01_*" -type d | while read hw_dir; do
+          run_homework_analysis "$hw_dir"
+        done
+        
+    # Run tests if they exist
+    - name: Run automated tests
+      run: |
+        echo "## 🧪 Test Results" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        find . -name "test_*.R" -o -name "*_test.R" | while read test_file; do
+          echo "Running tests in $(basename "$test_file")"
+          
+          if Rscript "$test_file" > /tmp/test_output.txt 2>&1; then
+            echo "✅ Tests passed in $(basename "$test_file")" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Tests failed in $(basename "$test_file")" >> $GITHUB_STEP_SUMMARY
+            echo "<details><summary>Test failures</summary>" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            head -30 /tmp/test_output.txt >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            echo "</details>" >> $GITHUB_STEP_SUMMARY
+          fi
+        done
+        
+    # Upload analysis artifacts
+    - name: Upload analysis results
+      uses: actions/upload-artifact@v4
+      with:
+        name: r-analysis-results
+        path: |
+          homework/*/code/results/**/*
+        retention-days: 30
+        
+    # Optional: Generate analysis report
+    - name: Generate analysis summary
+      run: |
+        Rscript -e "
+        # Create a simple summary report
+        cat('# Statistical Computing Analysis Summary\n')
+        cat('Generated on:', Sys.time(), '\n\n')
+        
+        # List all homework directories
+        hw_dirs <- list.dirs('homework', recursive = FALSE)
+        for (hw_dir in hw_dirs) {
+          cat('## ', basename(hw_dir), '\n')
+          
+          # Check for data files
+          data_files <- list.files(file.path(hw_dir, 'code/data'), pattern = '\\\\.csv$', full.names = TRUE)
+          if (length(data_files) > 0) {
+            cat('### Data files:\n')
+            for (df in data_files) {
+              if (file.exists(df)) {
+                data <- read.csv(df)
+                cat('- ', basename(df), ': ', nrow(data), ' rows, ', ncol(data), ' columns\n')
+              }
+            }
+          }
+          
+          # Check for result files
+          result_files <- list.files(file.path(hw_dir, 'code/results'), recursive = TRUE)
+          if (length(result_files) > 0) {
+            cat('### Generated results:\n')
+            for (rf in result_files) {
+              cat('- ', rf, '\n')
+            }
+          }
+          cat('\n')
+        }
+        " > analysis_summary.md
+        
+    - name: Upload summary
+      uses: actions/upload-artifact@v4
+      with:
+        name: analysis-summary
+        path: analysis_summary.md

@@ -47,10 +47,10 @@ datos %>%
   print()
 
 # Guardar datos en formato CSV ------------------------------------------------
-write_csv(datos, here("data", "datos_pacientes.csv"))
+write_csv(datos, here("code", "data", "datos_pacientes.csv"))
 
 # Mensaje de confirmación -----------------------------------------------------
-dir.create(here("data"), recursive = TRUE, showWarnings = FALSE)
-cat("\nDatos creados y guardados en: data/datos_pacientes.csv\n")
+dir.create(here("code", "data"), recursive = TRUE, showWarnings = FALSE)
+cat("\nDatos creados y guardados en: code/data/datos_pacientes.csv\n")
 cat("Total de observaciones:", nrow(datos), "\n")
 cat("Grupos:", unique(datos$grupo), "\n")

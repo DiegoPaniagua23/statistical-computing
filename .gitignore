@@ -18,23 +18,12 @@ Thumbs.db
 # -------------------------------------------------------------------
 # Generated files (outputs)
 # -------------------------------------------------------------------
-# If you generate PDF/HTML reports from RMarkdown, you can ignore them
-# if you prefer that each person compiles the .Rmd.
-# Example:
-# homework/01_poisson_logistic_regression/reporte/*.pdf
 *.pdf
 
 # -------------------------------------------------------------------
-# Course material folders (will be moved to 'course_materials')
+# Course material folders
 # -------------------------------------------------------------------
 /diapositivas
 /temario
 /libros
 /2024
-
-# -------------------------------------------------------------------
-# Large data files (optional)
-# -------------------------------------------------------------------
-# If you have very large data files, add them here.
-# Example:
-# **/data/very_large_file.csv

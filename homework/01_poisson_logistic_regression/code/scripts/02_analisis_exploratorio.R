@@ -13,7 +13,7 @@ library(ggplot2)
 library(here)
 
 # Cargar datos ----------------------------------------------------------------
-datos <- read_csv(here("data", "datos_pacientes.csv"), show_col_types = FALSE)
+datos <- read_csv(here("code", "data", "datos_pacientes.csv"), show_col_types = FALSE)
 
 # 1. Boxplot comparativo con puntos -------------------------------------------
 boxplot <- ggplot(datos, aes(x = grupo, y = conteo, fill = grupo)) +
@@ -48,11 +48,12 @@ densidad <- ggplot(datos, aes(x = conteo, fill = grupo)) +
   theme_bw()
 
 # Guardar gráficos ------------------------------------------------------------
-ggsave(here("results", "figures", "boxplot_comparativo.png"), 
+dir.create(here("code", "results", "figures"), recursive = TRUE, showWarnings = FALSE)
+ggsave(here("code", "results", "figures", "boxplot_comparativo.png"), 
        plot = boxplot, width = 8, height = 6, dpi = 300)
-ggsave(here("results", "figures", "histogramas_comparativos.png"), 
+ggsave(here("code", "results", "figures", "histogramas_comparativos.png"), 
        plot = histogramas, width = 8, height = 6, dpi = 300)
-ggsave(here("results", "figures", "densidad_comparativa.png"), 
+ggsave(here("code", "results", "figures", "densidad_comparativa.png"), 
        plot = densidad, width = 8, height = 6, dpi = 300)
 
 # Mostrar gráficos ------------------------------------------------------------
@@ -60,5 +61,4 @@ print(boxplot)
 print(histogramas)
 print(densidad)
 
-dir.create(here("results", "figures"), recursive = TRUE, showWarnings = FALSE)
-cat("\n Gráficos guardados en la carpeta: results/figures/\n")
+cat("\n Gráficos guardados en la carpeta: code/results/figures/\n")
