@@ -33,22 +33,28 @@ The homework consists of three main problems:
 
 ## Project Structure
 
-The repository is organized as follows:
+The assignment is organized as follows:
 
-- **`/code`**: Contains all the R code, data, and generated results for Problem 3.
-  - **`/code/data`**: Holds the raw dataset `datos_pacientes.csv` (T4 cell counts).
-  - **`/code/scripts`**: Includes the R scripts that form the analysis pipeline.
-    - `01_carga_limpieza.R`: Data creation and loading script.
-    - `02_analisis_exploratorio.R`: Exploratory data analysis with visualizations.
-    - `03_modelo_poisson.R`: Poisson and quasi-Poisson model fitting.
-  - **`/code/results`**: Stores the outputs from the analysis.
-    - **`/figures`**: EDA plots (boxplots, histograms, density plots).
-    - **`/models`**: Saved model objects (`.rds` files).
-- **`/report`**: Contains the complete LaTeX report with all three problems.
-  - `main.tex`: Main LaTeX document with formatting and structure.
-  - `structure.tex`: Content with mathematical derivations and analysis.
-  - `ref.bib`: Bibliography file.
-  - **`/images`**: Figures used in the report.
+```
+01_poisson_logistic_regression/
+├── code/                       # R analysis implementation
+│   ├── data/
+│   │   └── datos_pacientes.csv # T4 cell counts dataset
+│   ├── scripts/
+│   │   ├── 01_carga_limpieza.R # Data creation and loading
+│   │   ├── 02_analisis_exploratorio.R # EDA and visualizations
+│   │   └── 03_modelo_poisson.R # Poisson/quasi-Poisson modeling
+│   └── results/
+│       ├── figures/            # Generated plots
+│       └── models/             # Saved model objects (.rds)
+├── report/                     # LaTeX documentation
+│   ├── main.tex               # Main document structure
+│   ├── structure.tex          # Content and derivations
+│   ├── ref.bib                # Bibliography
+│   └── images/                # Figures for report
+├── setup_renv.R               # Environment setup script
+└── README.md                  # This file
+```
 
 ## Reproducibility
 
