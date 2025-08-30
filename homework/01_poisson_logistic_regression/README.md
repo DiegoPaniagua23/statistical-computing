@@ -10,7 +10,7 @@ The homework consists of three main problems:
 - **Objective**: Analyze Canadian Prime Minister approval data using logistic regression
 - **Key Tasks**:
   - Derive the log-likelihood function for logistic regression
-  - Prove that the MLE estimator for β₁ is the log odds ratio
+  - Prove that the MLE estimator for $\beta_1$ is the log odds ratio
   - Apply McNemar's test to compare paired proportions
 - **Statistical Concepts**: Maximum likelihood estimation, odds ratios, paired data analysis
 
