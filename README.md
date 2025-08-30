@@ -34,7 +34,7 @@ The current course progress:
 
 | Assignment | Topic | Key Methods | Link |
 |------------|-------|-------------|------|
-| **01** | **Poisson & Logistic Regression** | ✅ Complete | GLMs, MLE, McNemar's Test | [📂 View](./homework/01_poisson_logistic_regression/) |
+| **01** | **Poisson & Logistic Regression** | GLMs, MLE, McNemar's Test | [📂 View](./homework/01_poisson_logistic_regression/) |
 | 02 | ... | ... | ... |
 | 03 | ... | ... | ... |
 | 04 | ... | ... | ... |
