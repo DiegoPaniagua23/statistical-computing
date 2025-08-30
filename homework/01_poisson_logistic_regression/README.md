@@ -10,7 +10,7 @@ The homework consists of three main problems:
 - **Objective**: Analyze Canadian Prime Minister approval data using logistic regression
 - **Key Tasks**:
   - Derive the log-likelihood function for logistic regression
-  - Prove that the MLE estimator for β₁ is the log odds ratio
+  - Prove that the MLE estimator for $\beta_1$ is the log odds ratio
   - Apply McNemar's test to compare paired proportions
 - **Statistical Concepts**: Maximum likelihood estimation, odds ratios, paired data analysis
 
@@ -18,8 +18,8 @@ The homework consists of three main problems:
 - **Objective**: Prove that Bayes' theorem leads to logistic regression form
 - **Key Tasks**:
   - Use Bayes' theorem with normal distributions conditional on binary outcomes
-  - Show that P(Y=1|X) follows the logistic model form
-  - Derive the relationship β = (μ₁ - μ₀)/σ²
+  - Show that $P(Y=1|X)$ follows the logistic model form
+  - Derive the relationship $\beta = (\mu_1 - \mu_0)/\sigma^2$
 - **Statistical Concepts**: Bayes' theorem, conditional distributions, logistic transformation
 
 ### Problem 3: Poisson Regression Analysis (Practical Implementation)

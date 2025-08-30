@@ -9,7 +9,7 @@ This repository contains assignments and projects for the **Statistical Computin
 ## 📚 Course Content
 
 This course covers key areas of statistical computing including:
-- **Generalized Linear Models (GLMs)**: Poisson, logistic,...
+- **Generalized Linear Models (GLMs)**: Poisson, logistic, ...
 
 ## 📁 Repository Structure
 
@@ -33,11 +33,11 @@ statistical-computing/
 The current course progress:
 
 | Assignment | Topic | Key Methods | Link |
-|------------|-------|---------|-------------|---------|
-| **01** | **Poisson & Logistic Regression** | ✅ Complete | GLMs, MLE, McNemar's Test | [📂 View](./homework/01_poisson_logistic_regression/) |
-| 02 |  |  |  |
-| 03 |  |  |  |
-| 04 |  |  |  |
+|------------|-------|-------------|------|
+| **01** | **Poisson & Logistic Regression** | GLMs, MLE, McNemar's Test | [📂 View](./homework/01_poisson_logistic_regression/) |
+| 02 | ... | ... | ... |
+| 03 | ... | ... | ... |
+| 04 | ... | ... | ... |
 
 ## 🛠 Technical Stack
 
