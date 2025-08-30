@@ -1,4 +1,4 @@
-# Statistical Computing - CIMAT Master's Program
+# Statistical Computing 
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![R](https://img.shields.io/badge/R-276DC3?logo=r&logoColor=white)](https://www.r-project.org/)
@@ -19,13 +19,13 @@ The repository follows the next structure:
 statistical-computing/
 ├── homework/                    # Course assignments
 │   ├── 01_poisson_logistic_regression/
-│   │   ├── code/               # R scripts and data
-│   │   ├── report/             # LaTeX documents
-│   │   └── README.md           # Assignment details
+│   │   ├── code/                # R scripts and data
+│   │   ├── report/              # LaTeX documents
+│   │   └── README.md            # Assignment details
 │   └── [future assignments]/
-├── LICENSE                     # MIT license
-├── ADVANCED_SETUP.md          # Development best practices
-└── README.md                  # This file
+├── LICENSE                      # MIT license
+├── ADVANCED_SETUP.md            # Development best practices
+└── README.md                    # This file
 ```
 
 ## 📊 Assignments
