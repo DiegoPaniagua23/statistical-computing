@@ -13,7 +13,7 @@ library(ggplot2)
 library(here)
 
 # Cargar datos ----------------------------------------------------------------
-datos <- read_csv(here("data", "raw", "datos_pacientes.csv"))
+datos <- read_csv(here("data", "datos_pacientes.csv"), show_col_types = FALSE)
 
 # 1. Boxplot comparativo con puntos -------------------------------------------
 boxplot <- ggplot(datos, aes(x = grupo, y = conteo, fill = grupo)) +
@@ -23,18 +23,21 @@ boxplot <- ggplot(datos, aes(x = grupo, y = conteo, fill = grupo)) +
        subtitle = "Pacientes con Hodgkin (H) vs Otras enfermedades (No-H)",
        x = "Grupo",
        y = "Conteo por mm³") +
-  theme_minimal() +
+  theme_bw() +
   theme(legend.position = "none")
 
 # 2. Histogramas comparativos -------------------------------------------------
 histogramas <- ggplot(datos, aes(x = conteo, fill = grupo)) +
-  geom_histogram(alpha = 0.7, position = "identity", bins = 12) +
-  facet_wrap(~ grupo, ncol = 1) +
+  geom_histogram(alpha = 0.7, position = "identity", color = "black") +
+  facet_wrap(~ grupo, nrow = 1) +  
   labs(title = "Distribución de Conteos por Grupo",
        x = "Conteo por mm³",
        y = "Frecuencia") +
-  theme_minimal() +
-  theme(legend.position = "none")
+  theme_bw() +
+  theme(aspect.ratio = 1,
+        legend.position = "none",
+        strip.background = element_blank(),  
+        strip.text = element_text(face = "bold", size = 11)) 
 
 # 3. Gráfico de densidad ------------------------------------------------------
 densidad <- ggplot(datos, aes(x = conteo, fill = grupo)) +
@@ -42,19 +45,20 @@ densidad <- ggplot(datos, aes(x = conteo, fill = grupo)) +
   labs(title = "Densidad de Conteos de Células T4",
        x = "Conteo por mm³",
        y = "Densidad") +
-  theme_minimal()
+  theme_bw()
 
 # Guardar gráficos ------------------------------------------------------------
 ggsave(here("results", "figures", "boxplot_comparativo.png"), 
        plot = boxplot, width = 8, height = 6, dpi = 300)
 ggsave(here("results", "figures", "histogramas_comparativos.png"), 
-       plot = histogramas, width = 8, height = 8, dpi = 300)
+       plot = histogramas, width = 8, height = 6, dpi = 300)
 ggsave(here("results", "figures", "densidad_comparativa.png"), 
        plot = densidad, width = 8, height = 6, dpi = 300)
 
-# Mostrar gráficos en RStudio
+# Mostrar gráficos ------------------------------------------------------------
 print(boxplot)
 print(histogramas)
 print(densidad)
 
+dir.create(here("results", "figures"), recursive = TRUE, showWarnings = FALSE)
 cat("\n Gráficos guardados en la carpeta: results/figures/\n")
