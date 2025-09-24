@@ -25,7 +25,7 @@ This course covers key areas of statistical computing including:
     - Spectral analysis of time series
 3. **Computational intensive estimation methods** 
      - EM algorithm
-	   - MCMC algorithms 
+	 - MCMC algorithms 
      - Bootstrap 
 4. **Model evaluation and selection in regression analysis**
      - Criteria for evaluating and selecting the appropriate model
