@@ -9,7 +9,37 @@ This repository contains assignments and projects for the **Statistical Computin
 ## 📚 Course Content
 
 This course covers key areas of statistical computing including:
-- **Generalized Linear Models (GLMs)**: Poisson, logistic, ...
+
+1. **Generalized linear models**
+    - Logistic and Poisson regression models
+    - Generalized linear models, the general case
+    - Linear models of variance and covariance analysis
+    - Log-linear models
+2. **Time series analysis**
+    - Stochastic processes
+	- Autocovariance and autocorrelation 
+    - Stationary time series
+    - Autoregressive processes
+    - Moving average processes
+    - ARMA processes
+    - Spectral analysis of time series
+3. **Computational intensive estimation methods** 
+     - EM algorithm
+	   - MCMC algorithms 
+     - Bootstrap 
+4. **Model evaluation and selection in regression analysis**
+     - Criteria for evaluating and selecting the appropriate model
+     - Prediction error estimation: Cross-validation
+     - Model selection methods: Stepwise methods, AIC, BIC
+	 - Variable selection methods: Regularization, Ridge,
+       LARS, LASSO
+5. **Data imputation methods**
+    - Methods based on regression and covariance analysis.
+    - Methods based on the EM algorithm
+    - Bayesian imputation
+    - Methods based on machine learning techniques
+
+Translated with DeepL.com (free version)
 
 ## 📁 Repository Structure
 
@@ -17,29 +47,26 @@ The repository follows the next structure:
 
 ```
 statistical-computing/
-├── homework/                                  # Course assignments
+├── homework/                                   # Course assignments
 │   ├── 01_poisson_logistic_regression/
 │   │   ├── R/                                  # Scripts, data and derived outputs
 │   │   │   ├── data/
 │   │   │   ├── results/
 │   │   │   └── scripts/
 │   │   ├── report/                             # LaTeX sources and figures
-│   │   ├── README.md                           # Assignment outline
-│   │   └── setup_renv.R                        # Optional renv helper (scoped)
+│   │   ├── README.md                           
+│   │   └── setup_renv.R                        
 │   └── 02_glms_categorical_and_count_data/
-│       ├── R/
-│       │   ├── data/
-│       │   ├── results/
-│       │   └── scripts/
-│       ├── report/
-│       └── MCE_ComputoEstadistico_Tarea_02.pdf
+│   │   ├── R/
+│   │   │   ├── data/
+│   │   │   ├── results/
+│   │   │   └── scripts/
+│   │   ├── report/
+│   │   ├── README.md                           
+│   │   └── setup_renv.R                       
 ├── LICENSE
 └── README.md
 ```
-
-> Large reference material (class slides, syllabus, books) lives under
-> `diapositivas/`, `temario/`, `libros/` and `2024/`. These directories are
-> intentionally ignored by Git due to file size.
 
 ## 📊 Assignments
 
@@ -56,7 +83,7 @@ The current course progress:
 
 **Programming & Analysis:**
 - **R** (≥4.3.0): Statistical computing and graphics
-- **Key R Packages**: `dplyr`, `ggplot2`, `MASS`, `testthat`
+- **Key R Packages**: `dplyr`, `ggplot2`, `MASS`
 
 **Documentation & Reporting:**
 - **LaTeX**: Professional mathematical typesetting
@@ -66,7 +93,6 @@ The current course progress:
 **Development Tools:**
 - **RStudio**: Integrated development environment
 - **renv**: Reproducible package management
-- **testthat**: Automated testing framework
 
 ## 🚀 Getting Started
 
