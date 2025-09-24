@@ -2,14 +2,30 @@
 # Setup renv for Reproducible Package Management
 # =============================================================================
 
-# Install renv if not already installed
-if (!require("renv")) install.packages("renv")
+# Install helper packages on demand -------------------------------------------
+if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
 
-# Initialize renv in this project
-# This creates renv.lock and .Rprofile files
-renv::init()
+# Detect repository root (four levels up from this script) --------------------
+repo_root <- normalizePath(here::here("..", "..", "..", ".."), mustWork = TRUE)
+if (!file.exists(file.path(repo_root, "README.md")) ||
+    !file.exists(file.path(repo_root, "homework"))) {
+  stop("No se encontró la raíz del repositorio. Ejecuta este script con el ",
+       "directorio de trabajo ubicado en 'statistical-computing/'.")
+}
 
-# Install required packages for this project
+old_wd <- getwd()
+setwd(repo_root)
+on.exit(setwd(old_wd), add = TRUE)
+
+# Initialize or load renv -----------------------------------------------------
+if (!file.exists("renv.lock")) {
+  renv::init(bare = TRUE)
+} else {
+  renv::load()
+}
+
+# Install required packages for this project ----------------------------------
 required_packages <- c(
   "dplyr",      # Data manipulation
   "readr",      # Reading CSV files
@@ -19,12 +35,14 @@ required_packages <- c(
   "testthat"    # For testing (future use)
 )
 
-# Install packages
-renv::install(required_packages)
+missing_pkgs <- setdiff(required_packages, rownames(installed.packages()))
+if (length(missing_pkgs) > 0) {
+  renv::install(missing_pkgs)
+}
 
-# Create snapshot of current package versions
-renv::snapshot()
+# Create snapshot of current package versions ---------------------------------
+renv::snapshot(prompt = FALSE)
 
-cat("✅ renv setup complete!\n")
-cat("📦 Package versions locked in renv.lock\n")
-cat("🔄 Others can restore with: renv::restore()\n")
+cat("✅ renv configurado en:", repo_root, "\n")
+cat("📦 paquetes registrados en renv.lock\n")
+cat("🔄 Restaura con: renv::restore()\n")
