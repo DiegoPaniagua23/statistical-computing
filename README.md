@@ -17,16 +17,29 @@ The repository follows the next structure:
 
 ```
 statistical-computing/
-├── homework/                    # Course assignments
+├── homework/                                  # Course assignments
 │   ├── 01_poisson_logistic_regression/
-│   │   ├── code/                # R scripts and data
-│   │   ├── report/              # LaTeX documents
-│   │   └── README.md            # Assignment details
-│   └── [future assignments]/
-├── LICENSE                      # MIT license
-├── ADVANCED_SETUP.md            # Development best practices
-└── README.md                    # This file
+│   │   ├── R/                                  # Scripts, data and derived outputs
+│   │   │   ├── data/
+│   │   │   ├── results/
+│   │   │   └── scripts/
+│   │   ├── report/                             # LaTeX sources and figures
+│   │   ├── README.md                           # Assignment outline
+│   │   └── setup_renv.R                        # Optional renv helper (scoped)
+│   └── 02_glms_categorical_and_count_data/
+│       ├── R/
+│       │   ├── data/
+│       │   ├── results/
+│       │   └── scripts/
+│       ├── report/
+│       └── MCE_ComputoEstadistico_Tarea_02.pdf
+├── LICENSE
+└── README.md
 ```
+
+> Large reference material (class slides, syllabus, books) lives under
+> `diapositivas/`, `temario/`, `libros/` and `2024/`. These directories are
+> intentionally ignored by Git due to file size.
 
 ## 📊 Assignments
 
@@ -35,7 +48,7 @@ The current course progress:
 | Assignment | Topic | Key Methods | Link |
 |------------|-------|-------------|------|
 | **01** | **Poisson & Logistic Regression** | GLMs, MLE, McNemar's Test | [📂 View](./homework/01_poisson_logistic_regression/) |
-| 02 | ... | ... | ... |
+| **02** | **GLMs: Categorical & Count Data** | Logistic models, Poisson regression, diagnostics | [📂 View](./homework/02_glms_categorical_and_count_data/) |
 | 03 | ... | ... | ... |
 | 04 | ... | ... | ... |
 
