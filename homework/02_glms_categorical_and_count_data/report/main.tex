@@ -1,0 +1,161 @@
+\documentclass[paper=letter, fontsize=11pt]{article}
+
+% Typography and layout packages
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref} % Hipervinculos
+\usepackage{verbatim}
+\usepackage{pictex}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[english]{babel} % Language and hyphenation
+\usepackage{amsmath, amsfonts, amsthm, amssymb} % Math packages
+\usepackage{fancyvrb}
+\usepackage{sectsty} % Customize section commands
+\usepackage{geometry} % Modify margins
+\usepackage{titlesec} % Customize section titles
+\usepackage{float} % Mantener imagenes donde se desea
+\usepackage{booktabs} % For better table formatting
+\usepackage{array} % For better column control
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usetikzlibrary{positioning}
+\usepackage[edges]{forest}
+\usepackage{minted}
+\usepackage{longtable}
+\usepackage{multirow}
+
+% --- Configuración personalizada para el estilo de código R ---
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=single,
+    rulecolor=\color{black},
+    title=\lstname
+}
+
+\lstset{style=mystyle}
+
+% Definir colores personalizados
+\definecolor{bg}{RGB}{248,248,248}
+\definecolor{codegreen}{rgb}{0,0.5,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backblue}{RGB}{240,248,255}
+
+% Configuración general para minted
+\setminted{
+    bgcolor=bg,
+    fontsize=\footnotesize,
+    linenos,
+    frame=lines,
+    framesep=4mm,
+    baselinestretch=1.1,
+    breaklines=true,
+    tabsize=4,
+    obeytabs=true
+}
+
+\geometry{
+    left=3cm, % Left margin
+    right=3cm, % Right margin
+    top=2.5cm, % Top margin
+    bottom=2.5cm, % Bottom margin
+}
+\allsectionsfont{\centering \normalfont\scshape} % Center and style section titles
+
+% Header and footer customization
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead[L]{\slshape} % Remove section title from header
+\fancyhead[C]{} % Header center
+\fancyhead[R]{\thepage} % Header right with page number
+\fancyfoot[L]{} % Footer left
+\fancyfoot[C]{} % Footer center
+\renewcommand{\headrulewidth}{0.4pt} % Header rule
+\renewcommand{\footrulewidth}{0.4pt} % Footer rule
+\setlength{\headheight}{14.5pt} % Header height
+
+\numberwithin{equation}{section} % Number equations within sections
+\numberwithin{figure}{section} % Number figures within sections
+\numberwithin{table}{section} % Number tables within sections
+
+\setlength\parindent{0pt} % No paragraph indentation
+\setlength{\parskip}{0.5em} % Space between paragraphs
+
+% Custom command for a horizontal rule
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} 
+
+% Custom section titles
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+\definecolor{CIMATRed}{rgb}{0.71, 0.06, 0.15} % Color CIMAT
+%\pagenumbering{gobble} % Omitir numeracion portada
+
+% Title and author
+\title{	
+\normalfont \normalsize 
+\textsc{Centro de Investigaci\'on en Matem\'aticas (CIMAT)\\
+Unidad Monterrey
+\\ [15pt]
+\textcolor{CIMATRed}{\textbf{\large{Computo Estadístico}}}} 
+\\ [25pt] 
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge \textbf{Tarea 2} \\[0.2cm]
+\large{Modelos Lineales Generalizados para Datos Categóricos y de Conteo}\\ 
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{\normalsize{Diego Paniagua Molina}\\\normalsize{\href{mailto:diego.paniagua@cimat.mx} {diego.paniagua@cimat.mx}}}
+
+\date{\normalsize{21 de Septiembre del 2025}} % Fecha de entrega
+
+\renewcommand{\theequation}{\arabic{equation}} % Enumeracion ecuaciones
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle % Print the title
+\thispagestyle{empty}
+
+\begin{figure}[htpb]
+  \begin{center}
+    \includegraphics[scale=0.6]{images/CIMAT_logo.png}
+    \label{fig:hist1}
+  \end{center}
+\end{figure}
+
+\newpage
+\fancyfoot[R]{\small \slshape Diego Paniagua Molina} % Footer right
+\input{structure}
+
+
+\end{document}
