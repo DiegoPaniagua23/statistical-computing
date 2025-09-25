@@ -37,23 +37,23 @@ The assignment is organized as follows:
 
 ```
 01_poisson_logistic_regression/
-├── code/                       # R analysis implementation
+├── R/
 │   ├── data/
-│   │   └── datos_pacientes.csv # T4 cell counts dataset
+│   │   └── datos_pacientes.csv
 │   ├── scripts/
-│   │   ├── 01_carga_limpieza.R # Data creation and loading
-│   │   ├── 02_analisis_exploratorio.R # EDA and visualizations
-│   │   └── 03_modelo_poisson.R # Poisson/quasi-Poisson modeling
+│   │   ├── 01_carga_limpieza.R
+│   │   ├── 02_analisis_exploratorio.R
+│   │   └── 03_modelo_poisson.R
 │   └── results/
-│       ├── figures/            # Generated plots
-│       └── models/             # Saved model objects (.rds)
-├── report/                     # LaTeX documentation
-│   ├── main.tex               # Main document structure
-│   ├── structure.tex          # Content and derivations
-│   ├── ref.bib                # Bibliography
-│   └── images/                # Figures for report
-├── setup_renv.R               # Environment setup script
-└── README.md                  # This file
+│       ├── figures/
+│       └── models/
+├── report/
+│   ├── Tarea_1_CE.pdf
+│   ├── main.tex
+│   ├── structure.tex
+│   └── images/
+├── setup_renv.R
+└── README.md
 ```
 
 ## Reproducibility
@@ -64,23 +64,18 @@ The assignment is organized as follows:
    cd statistical-computing
    ```
 
-2. **Set up R environment:**
-   ```r
-   # Install required packages
-   install.packages(c("dplyr", "ggplot2", "MASS", "testthat", "rmarkdown"))
-   ```
-
-3. **Navigate to an assignment:**
+2. **Bootstrap the renv environment for this assignment:**
    ```bash
-   cd homework/01_poisson_logistic_regression/
+   Rscript homework/01_poisson_logistic_regression/setup_renv.R
    ```
+   This script installs the packages declared for Homework 01 and updates `renv.lock`. In later sessions you can call `renv::restore()` from the repository root to recreate the same library.
 
-4. **Run the analysis:**
+3. **Run the analysis (from the repository root in an R session):**
    ```r
-   # Execute scripts in order
-   source("code/scripts/01_carga_limpieza.R")
-   source("code/scripts/02_analisis_exploratorio.R")
-   source("code/scripts/03_modelo_poisson.R")
+   renv::activate()
+   source("homework/01_poisson_logistic_regression/R/scripts/01_carga_limpieza.R")
+   source("homework/01_poisson_logistic_regression/R/scripts/02_analisis_exploratorio.R")
+   source("homework/01_poisson_logistic_regression/R/scripts/03_modelo_poisson.R")
    ```
 
-The complete mathematical derivations and interpretations are available in the LaTeX report.
+The complete mathematical derivations and interpretations, and conclusions for all problems are available in the PDF report located in the report/ directory.
