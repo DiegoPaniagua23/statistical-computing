@@ -43,6 +43,4 @@ if (length(missing_pkgs) > 0) {
 # Create snapshot of current package versions ---------------------------------
 renv::snapshot(prompt = FALSE)
 
-cat("✅ renv configurado en:", repo_root, "\n")
-cat("📦 paquetes registrados en renv.lock\n")
-cat("🔄 Restaura con: renv::restore()\n")
+cat("\nrenv configured. Restore the environment with renv::restore().\n")
